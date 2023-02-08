@@ -1,0 +1,41 @@
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#0C9;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+}
+
+.my-float{
+	margin-top:22px;
+}
+
+.navbar__logo {
+	width: 70px;
+}
+
+.input__height {
+	height: calc(1.5em + .75rem + 2px);
+}
+
+select{
+	width: 100%;
+	border-radius: 0.25rem;
+	border: 1px solid #ced4da;
+}
+
+.arrow{
+	color: black;
+	font-size: 25px;
+}
+
+.prev-category {
+	background-color: #FFC045;
+	transition: all 10s;
+	width: fit-content;
+}
