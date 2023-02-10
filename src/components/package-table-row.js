@@ -43,9 +43,9 @@ function PackageTableRow({packages, refresh}) {
                                         <td>{listPackage.selectedCategory}</td>
                                         <td>{listPackage.checkedState.join(', ')}</td>
                                         <td>
-                                                <Link to={`/edit-package/${listPackage.id}`}>
+                                                {/* <Link to={`/edit-package/${listPackage.id}`}>
                                                         <button type="button" className="btn btn-warning mr-2"><FaPencilAlt /></button>
-                                                </Link>
+                                                </Link> */}
                                                 <button type="button" className="btn btn-danger" onClick={() => onDeleteHandler(listPackage.id)}><FaTrashAlt /></button>
                                         </td>
                                 </tr>
