@@ -70,7 +70,6 @@ function EditPackageForm({ getId }) {
                 }else{
                         setCheckedState(checkedState.filter(checkState => checkState !== itemList))
                 }
-                console.log(itemList)
         };
         
         const onSubmit = async (event) => {

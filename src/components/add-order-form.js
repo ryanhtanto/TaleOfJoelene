@@ -36,6 +36,7 @@ function OrderForm() {
         };
         const onSubmit = async (event) => {
                 event.preventDefault();
+                Swal.showLoading()
                 const packageData = await getAllPackage()
                 
                 for(let i = 0; i < packageData.length; i++){

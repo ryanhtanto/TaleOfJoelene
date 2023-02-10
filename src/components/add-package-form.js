@@ -61,6 +61,7 @@ function PackageForm() {
         };
         const onSubmit = async (event) => {
                 event.preventDefault();
+                Swal.showLoading()
                 const addPackageToDB = await addPackage({name, selectedCategory, checkedState})
                 if(addPackageToDB){
                         Swal.fire({

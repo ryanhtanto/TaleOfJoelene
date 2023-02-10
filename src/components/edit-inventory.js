@@ -35,8 +35,8 @@ function EditInventory({ getId }) {
 
         const onSubmit = async (event) => {
                 event.preventDefault()
-                const editData = await putItems(name, stock, selectedCategory, parseFloat(getId))
                 Swal.showLoading()
+                const editData = await putItems(name, stock, selectedCategory, parseFloat(getId))
                 if (editData.success) {
                         Swal.fire({
                                 icon: 'success',

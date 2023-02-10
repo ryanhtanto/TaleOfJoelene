@@ -25,9 +25,9 @@ function InventoryForm() {
 
         const onSubmit = async (event) => {
                 event.preventDefault();
+                Swal.showLoading()
                 const valueFromDb = await getAllItems();
                 if(valueFromDb.length === 0){
-                        Swal.showLoading()
                         await addItems({name, stock, selectedCategory})
                         Swal.fire({
                                 icon: 'success',
