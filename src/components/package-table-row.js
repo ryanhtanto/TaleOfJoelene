@@ -1,5 +1,6 @@
 import React from 'react'
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { deletePackages } from '../data/utils';
 
@@ -42,9 +43,9 @@ function PackageTableRow({packages, refresh}) {
                                         <td>{listPackage.selectedCategory}</td>
                                         <td>{listPackage.checkedState.join(', ')}</td>
                                         <td>
-                                                {/* <Link to={`/edit-inventory/${inventory.id}`}>
+                                                <Link to={`/edit-package/${listPackage.id}`}>
                                                         <button type="button" className="btn btn-warning mr-2"><FaPencilAlt /></button>
-                                                </Link> */}
+                                                </Link>
                                                 <button type="button" className="btn btn-danger" onClick={() => onDeleteHandler(listPackage.id)}><FaTrashAlt /></button>
                                         </td>
                                 </tr>

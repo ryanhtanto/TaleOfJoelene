@@ -1,5 +1,6 @@
 import React from 'react'
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaPencilAlt, FaTrashAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { deleteOrders } from '../data/utils';
 
@@ -45,9 +46,9 @@ function OrderTableRow({orders, refresh}) {
                                         <td>{order.pengiriman}</td>
                                         <td>{order.address}</td>
                                         <td>
-                                                {/* <Link to={`/edit-inventory/${inventory.id}`}>
+                                                <Link to={`/edit-order/${order.id}`}>
                                                         <button type="button" className="btn btn-warning mr-2"><FaPencilAlt /></button>
-                                                </Link> */}
+                                                </Link>
                                                 <button type="button" className="btn btn-danger" onClick={() => onDeleteHandler(order.id)}><FaTrashAlt /></button>
                                         </td>
                                 </tr>

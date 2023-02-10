@@ -35,15 +35,15 @@ const getAllItems = async () => {
 const deleteItems = async (id) => {
         await deleteDoc(doc(db, "items", `${id}`));
         try {
-          await deleteDoc(doc(db, 'items', `${id}`));
-          return {
-            success: true,
-          };
+                await deleteDoc(doc(db, 'items', `${id}`));
+                return {
+                        success: true,
+                };
         } catch (error) {
-          return {
-            success: false,
-            message: `Can't Delete Savings Plan ${error.message}`,
-          };
+                return {
+                        success: false,
+                        message: `Can't Delete Savings Plan ${error.message}`,
+                };
         }
 };
 
@@ -81,6 +81,16 @@ const getSeasons = async () => {
         return data;
 };
 
+const getPackageDetail = async (id) => {
+        const categoryQuery = doc(db, 'package', `${id}`);
+        const querySnapshot = await getDoc(categoryQuery);
+      
+        if (querySnapshot.exists()) {
+                return querySnapshot.data();
+        }
+        alert('No such document!');
+};
+
 const getInventories = async (id) => {
         const docRef = doc(db, 'items', `${id}`);
         const docSnap = await getDoc(docRef);
@@ -105,7 +115,7 @@ const putItems = async (name, stock, selectedCategory, getId) => {
         }catch(error){
                 return {
                         success: false,
-                        message: `Failed Add Transaction ${error.message}`,
+                        message: `Failed Edit Items ${error.message}`,
                 };
         }
 };
@@ -141,6 +151,25 @@ const addPackage = async ({name, selectedCategory, checkedState}) => {
                 });
         }
 }
+
+const putPackage = async (name, selectedCategory, checkedState, getId) => {
+        try{
+                await setDoc(doc(db, 'package', `${getId}`),{
+                        id: getId,
+                        name, 
+                        checkedState,
+                        selectedCategory,
+                })
+                return {
+                        success: true,
+                };
+        }catch(error){
+                return {
+                        success: false,
+                        message: `Failed Edit Package ${error.message}`,
+                };
+        }
+};
 
 const getAllPackage = async () => {
         const recentItemsQuery = collection(db, 'package');
@@ -179,6 +208,16 @@ const getItemsPerOrder = async (selectedPackage) => {
         return data;
 };
 
+const getOrders = async (id) => {
+        const docRef = doc(db, 'orders', `${id}`);
+        const docSnap = await getDoc(docRef);
+      
+        if (docSnap.exists()) {
+                return docSnap.data();
+        }
+        alert('No such document!');
+};
+
 const addOrders = async ({name, orders, nomor, pengiriman, selectedCategory, address}) => {
         const id = +new Date()
         try {
@@ -200,6 +239,28 @@ const addOrders = async ({name, orders, nomor, pengiriman, selectedCategory, add
                 });
         }
 }
+
+const putOrders = async ({name, orders, nomor, pengiriman, selectedCategory, address, getId}) => {
+        try{
+                await setDoc(doc(db, 'orders', `${getId}`),{
+                        id: getId,
+                        name, 
+                        orders,
+                        nomor,
+                        pengiriman,
+                        selectedCategory,
+                        address,
+                })
+                return {
+                        success: true,
+                };
+        }catch(error){
+                return {
+                        success: false,
+                        message: `Failed Edit Orders ${error.message}`,
+                };
+        }
+};
 
 const getAllOrders = async () => {
         const recentItemsQuery = collection(db, 'orders');
@@ -225,4 +286,25 @@ const deleteOrders = async (id) => {
         }
 };
 
-export { addItems, getAllItems, deleteItems, addSeason, deleteSeason, getSeasons, getInventories, putItems, getItemsPerSeason, addPackage, getAllPackage, deletePackages, getItemsPerOrder, addOrders, getAllOrders, deleteOrders};
+export { 
+        addItems, 
+        getAllItems, 
+        deleteItems, 
+        addSeason, 
+        deleteSeason, 
+        getSeasons, 
+        getPackageDetail, 
+        getInventories, 
+        putItems, 
+        getItemsPerSeason, 
+        addPackage, 
+        putPackage, 
+        getAllPackage, 
+        deletePackages, 
+        getItemsPerOrder, 
+        addOrders, 
+        getAllOrders, 
+        deleteOrders, 
+        putOrders,
+        getOrders
+};
